@@ -13,12 +13,13 @@
 
 - name: Modify daemon.json
   template:
-    src: /templates/daemon.json.j2
+    src: templates/daemon.json.j2
     dest: /etc/docker/daemon.json
     owner: root
     group: root
     mode: '0644'
   when: docker_daemon_config != ""
+  notify: restart docker
 
 # TODO: Remove this shim once 18.09.1 or later is released.
 - import_tasks: docker-1809-shim.yml
