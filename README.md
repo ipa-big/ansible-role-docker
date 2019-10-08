@@ -24,8 +24,11 @@ You can control whether the package is installed, uninstalled, or at the latest 
     docker_service_state: started
     docker_service_enabled: true
     docker_restart_handler_state: restarted
+    docker_daemon_config: ""
 
 Variables to control the state of the `docker` service, and whether it should start on boot. If you're installing Docker inside a Docker container without systemd or sysvinit, you should set these to `stopped` and set the enabled variable to `no`.
+
+The variable `docker_dameon_config` allows to define the content of the `/etc/docker/daemon.json` file on the target host.
 
     docker_install_compose: true
     docker_compose_version: "1.22.0"
